@@ -1,0 +1,112 @@
+/* Общие стили для мобильного вида (mobile-first) */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.95em;
+}
+
+h2 {
+    text-align: center;
+}
+
+li {
+    margin-top: 20px;
+}
+
+img {
+    border: 5px solid blue;
+    border-radius: 35px;
+    width: 100%;
+    height: auto; /* Чтобы изображение сохраняло пропорции */
+}
+
+.label {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Сеточный макет для мобильного вида */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+figcaption {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Медиазапросы */
+
+/* Планшетный вид (ширина от 772px) */
+@media (min-width: 772px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    figure {
+        border-radius: 50%; /* Круглая форма для всех фигур */
+    }
+
+    /* Последняя фигура занимает обе колонки */
+    .grid figure:nth-child(9) {
+        grid-column: span 2;
+    }
+}
+
+/* Большой экран (ширина от 992px) */
+@media (min-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Каждая третья фигура занимает обе колонки */
+    .grid figure:nth-child(3n) {
+        grid-column: span 2;
+    }
+
+    figure {
+        border-radius: 0; /* Удаление радиуса границы */
+    }
+}
+
+/* Снижение движения (reduce-motion) */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto; /* Убрать плавную прокрутку */
+    }
+}
+
+/* Цветовая схема для темной темы */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #181818; /* Темный фон */
+    }
+
+    figure {
+        background-color: #333; /* Темный фон фигур */
+        color: #f0e68c; /* Светлый цвет шрифта (желтоватый) */
+        border-color: #000; /* Черная граница */
+    }
+}
